@@ -36,4 +36,14 @@ public class BillServiceImpl implements BillService {
     public void addBill(Bill bill) {
         billMapper.addBill(bill);
     }
+
+
+    /**
+     * 删除账单
+     * @param bill 账单信息
+     */
+    @Override
+    public void deleteBill(Bill bill) {
+        billMapper.deleteBill(bill);
+    }
 }

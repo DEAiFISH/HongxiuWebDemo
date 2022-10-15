@@ -32,4 +32,12 @@ public interface BillMapper {
     @ResultMap("billMapper")
     @Insert("insert into tb_bill values(#{uid},#{amount},#{description},#{meId},#{date});")
     void addBill(Bill bill);
+
+
+    /**
+     * 删除账单
+     * @param bill 账单信息
+     */
+    @Delete("delete from tb_bill where fu_uid = #{uid};")
+    void deleteBill(Bill bill);
 }

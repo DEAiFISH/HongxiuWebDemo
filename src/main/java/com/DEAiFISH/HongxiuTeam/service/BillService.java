@@ -8,4 +8,6 @@ public interface BillService {
     ArrayList<Bill> getAllBill();
 
     void addBill(Bill bill);
+
+    void deleteBill(Bill bill);
 }
