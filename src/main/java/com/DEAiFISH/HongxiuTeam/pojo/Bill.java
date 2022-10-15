@@ -1,7 +1,7 @@
 package com.DEAiFISH.HongxiuTeam.pojo;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 public class Bill {
     /**
@@ -23,17 +23,17 @@ public class Bill {
     /**
      * 成员ID
      */
-    private Integer meID;
+    private Integer meId;
 
     public Bill() {
     }
 
-    public Bill(Integer uid, Date date, BigDecimal amount, String description, Integer meID) {
+    public Bill(Integer uid, Date date, BigDecimal amount, String description, Integer meId) {
         this.uid = uid;
         this.date = date;
         this.amount = amount;
         this.description = description;
-        this.meID = meID;
+        this.meId = meId;
     }
 
     public Date getDate() {
@@ -68,12 +68,12 @@ public class Bill {
         this.description = description;
     }
 
-    public Integer getMeID() {
-        return meID;
+    public Integer getMeId() {
+        return meId;
     }
 
-    public void setMeID(Integer meID) {
-        this.meID = meID;
+    public void setMeId(Integer meId) {
+        this.meId = meId;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Bill {
                 ", date=" + date +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
-                ", meID=" + meID +
+                ", meId=" + meId +
                 '}';
     }
 }

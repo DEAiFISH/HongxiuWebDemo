@@ -7,20 +7,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service
 @Transactional
 public class BillServiceImpl implements BillService {
 
     @Autowired
-    private BillMapper fundsMapper;
+    private BillMapper billMapper;
+
+    /**
+     * 查询所有账单
+     *
+     * @return 账单
+     */
+    @Override
+    public ArrayList<Bill> getAllBill() {
+
+        return billMapper.getAllBill();
+    }
 
     /**
      * 查询账单
-     * @return 余额 + 账单
+     *
+     * @param bill 账单信息
      */
     @Override
-    public Bill searchBill() {
-
-        return fundsMapper.searchBill();
+    public void addBill(Bill bill) {
+        billMapper.addBill(bill);
     }
 }

@@ -9,7 +9,7 @@ public class Member extends People {
     public Member() {
     }
 
-    public Member(Integer id){
+    public Member(Integer id) {
         super(id);
     }
 

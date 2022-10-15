@@ -15,7 +15,7 @@ public interface MemberMapper {
             @Result(column = "me_gender", property = "gender"),
             @Result(column = "me_grade", property = "grade"),
             @Result(column = "me_password", property = "password"),
-            @Result(column = "me_position", property = "position" ,javaType = Position.class)})
+            @Result(column = "me_position", property = "position", javaType = Position.class)})
 
 
     /**
@@ -47,6 +47,7 @@ public interface MemberMapper {
 
     /**
      * 添加队员
+     *
      * @param member 队员信息
      */
     @ResultMap("memberMapper")
@@ -56,6 +57,7 @@ public interface MemberMapper {
 
     /**
      * 删除成员
+     *
      * @param member 成员信息
      */
     @ResultMap("memberMapper")
@@ -64,6 +66,7 @@ public interface MemberMapper {
 
     /**
      * 修改成员
+     *
      * @param member 成员新信息
      */
     @ResultMap("memberMapper")

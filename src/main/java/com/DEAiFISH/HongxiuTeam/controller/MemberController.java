@@ -16,11 +16,11 @@ import java.util.List;
  * 查询所有队员 /member/all --> GET
  * 查询指定队员 /member/search --> GET
  * 队员登录 /member/login --> GET
- *
+ * <p>
  * 注册队员 /member/signup --> POST
- *
+ * <p>
  * 修改队员 /member/update --> PUT
- *
+ * <p>
  * 删除队员 /member/delete --> DELETE
  */
 
@@ -38,10 +38,8 @@ public class MemberController {
      */
     @RequestMapping(value = "/member/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<Member> getAllMember() {
-        ArrayList<Member> allMember = memberService.getAllMember();
-        allMember.forEach(System.out::println);
-        return allMember;
+    public ArrayList<Member> getAllMember() {
+        return memberService.getAllMember();
     }
 
 
@@ -52,7 +50,7 @@ public class MemberController {
      */
     @RequestMapping(value = {"/member/search"}, method = RequestMethod.GET)
     @ResponseBody
-    public List<Member> searchMember(@RequestBody Member member) {
+    public ArrayList<Member> searchMember(@RequestBody Member member) {
         return memberService.searchMember(member);
     }
 
@@ -106,12 +104,12 @@ public class MemberController {
     }
 
     /**
-     *  删除队员
+     * 删除队员
      *
      * @param member 队员信息
      * @return
      */
-    @RequestMapping(value = "/member/delete", method = RequestMethod.DELETE,produces = "application/html;charset=utf-8")
+    @RequestMapping(value = "/member/delete", method = RequestMethod.DELETE, produces = "application/html;charset=utf-8")
     @ResponseBody
     public String deleteMember(@RequestBody Member member) {
 
@@ -123,12 +121,13 @@ public class MemberController {
 
     /**
      * 修改成员
+     *
      * @param member 成员新信息
      * @return
      */
-    @RequestMapping(value = "/member/update",method = RequestMethod.PUT,produces = "application/html;charset=utf-8")
+    @RequestMapping(value = "/member/update", method = RequestMethod.PUT, produces = "application/html;charset=utf-8")
     @ResponseBody
-    public String updateMember(@RequestBody Member member){
+    public String updateMember(@RequestBody Member member) {
         memberService.updateMember(member);
         return "修改成功";
     }

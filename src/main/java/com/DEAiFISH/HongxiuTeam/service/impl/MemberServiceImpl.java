@@ -18,7 +18,8 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * 查询所有队员
-     * @return  返回列表
+     *
+     * @return 返回列表
      */
     @Override
     public ArrayList<Member> getAllMember() {
@@ -28,6 +29,7 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * 查询指定队员信息
+     *
      * @param member 学生信息
      * @return 查询信息
      */
@@ -38,6 +40,7 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * 注册队员
+     *
      * @param member 队员信息
      */
     @Override
@@ -48,6 +51,7 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * 删除队员
+     *
      * @param member 队员信息
      */
     @Override
@@ -57,6 +61,7 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * 修改队员
+     *
      * @param member 新队员信息
      */
     @Override
