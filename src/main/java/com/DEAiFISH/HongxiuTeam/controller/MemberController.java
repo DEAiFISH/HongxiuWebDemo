@@ -16,9 +16,11 @@ import java.util.List;
  * 查询所有队员 /member/all --> GET
  * 查询指定队员 /member/search --> GET
  * 队员登录 /member/login --> GET
- * <p>
+ *
  * 注册队员 /member/signup --> POST
- * <p>
+ *
+ * 修改队员 /member/update --> PUT
+ *
  * 删除队员 /member/delete --> DELETE
  */
 
@@ -79,7 +81,7 @@ public class MemberController {
      * @param member 传入id
      * @return true:ok;false:no;
      */
-    @RequestMapping(value = "/member/contains", method = RequestMethod.GET, produces = "application/html;charset=utf-8")
+    @RequestMapping(value = "/member/contains", method = RequestMethod.GET)
     @ResponseBody
     public boolean containsMemberById(@RequestBody Member member) {
         ArrayList<Member> memberList = memberService.searchMember(new Member(member.getId()));
@@ -105,6 +107,7 @@ public class MemberController {
 
     /**
      *  删除队员
+     *
      * @param member 队员信息
      * @return
      */
@@ -115,6 +118,19 @@ public class MemberController {
         memberService.deleteMember(member);
 
         return "删除成功";
+    }
+
+
+    /**
+     * 修改成员
+     * @param member 成员新信息
+     * @return
+     */
+    @RequestMapping(value = "/member/update",method = RequestMethod.PUT,produces = "application/html;charset=utf-8")
+    @ResponseBody
+    public String updateMember(@RequestBody Member member){
+        memberService.updateMember(member);
+        return "修改成功";
     }
 
 

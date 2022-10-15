@@ -14,19 +14,9 @@ public class Funds {
      */
     private List<Bill> listOfBill;
 
-    /**
-     * 懒汉式：创建单例模式
-     */
-    private static Funds instance;
 
-    public static synchronized Funds getInstance(){
-        if(instance == null){
-            instance = new Funds(BigDecimal.valueOf(0),new ArrayList<Bill>());
-        }
-        return instance;
-    }
 
-    private Funds(BigDecimal money, List<Bill> listOfBill) {
+    public Funds(BigDecimal money, List<Bill> listOfBill) {
         this.money = money;
         this.listOfBill = listOfBill;
     }
@@ -45,5 +35,13 @@ public class Funds {
 
     public void setListOfBill(List<Bill> listOfBill) {
         this.listOfBill = listOfBill;
+    }
+
+    @Override
+    public String toString() {
+        return "Funds{" +
+                "money=" + money +
+                ", listOfBill=" + listOfBill +
+                '}';
     }
 }

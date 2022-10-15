@@ -1,11 +1,18 @@
 package com.DEAiFISH.HongxiuTeam.pojo;
 
-/**
- * 职位
- */
 public enum Position {
-    LEADER,
-    VICE_CAPTION,
-    ADMIN,
-    MEMBER
+    LEADER("LEADER"),
+    VICE_CAPTION("VICE_CAPTION"),
+    ADMIN("ADMIN"),
+    MEMBER("MEMBER");
+
+    private String name;
+
+    Position(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

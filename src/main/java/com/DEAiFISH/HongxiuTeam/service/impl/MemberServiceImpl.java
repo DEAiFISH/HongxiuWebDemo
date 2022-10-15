@@ -54,4 +54,13 @@ public class MemberServiceImpl implements MemberService {
     public void deleteMember(Member member) {
         memberMapper.deleteMember(member);
     }
+
+    /**
+     * 修改队员
+     * @param member 新队员信息
+     */
+    @Override
+    public void updateMember(Member member) {
+        memberMapper.updateMember(member);
+    }
 }

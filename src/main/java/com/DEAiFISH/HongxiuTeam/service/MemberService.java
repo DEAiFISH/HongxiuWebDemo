@@ -13,4 +13,6 @@ public interface MemberService {
     void memberSignUp(Member member);
 
     void deleteMember(Member member);
+
+    void updateMember(Member member);
 }

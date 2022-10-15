@@ -1,12 +1,17 @@
 package com.DEAiFISH.HongxiuTeam.pojo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Bill {
     /**
      * 流水号
      */
     private Integer uid;
+    /**
+     * 时间
+     */
+    private Date date;
     /**
      * 花费金额
      */
@@ -23,11 +28,20 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Integer uid, BigDecimal amount, String description, Integer meID) {
+    public Bill(Integer uid, Date date, BigDecimal amount, String description, Integer meID) {
         this.uid = uid;
+        this.date = date;
         this.amount = amount;
         this.description = description;
         this.meID = meID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Integer getUid() {
@@ -66,6 +80,7 @@ public class Bill {
     public String toString() {
         return "Bill{" +
                 "uid=" + uid +
+                ", date=" + date +
                 ", amount=" + amount +
                 ", description='" + description + '\'' +
                 ", meID=" + meID +

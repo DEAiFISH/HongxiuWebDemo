@@ -15,8 +15,7 @@ public interface MemberMapper {
             @Result(column = "me_gender", property = "gender"),
             @Result(column = "me_grade", property = "grade"),
             @Result(column = "me_password", property = "password"),
-            @Result(column = "me_position", property = "position" ,javaType = Position.class)
-    })
+            @Result(column = "me_position", property = "position" ,javaType = Position.class)})
 
 
     /**
@@ -39,15 +38,15 @@ public interface MemberMapper {
             "<if test= \"age != null and age != ''\"> and me_age = #{age} </if>" +
             "<if test= \"gender != null and gender != ''\"> and me_gender = #{gender} </if>" +
             "<if test= \"grade != null and grade != ''\"> and me_grade = #{grade} </if>" +
-            "<if test= \"name != null and grade != ''\"> and me_name = #{name} </if>" +
-            "<if test= \"password != null and grade != ''\"> and me_password = #{password} </if>" +
-            "<if test= \"position != null and grade != ''\"> and me_position = #{position} </if>" +
+            "<if test= \"name != null and name != ''\"> and me_name = #{name} </if>" +
+            "<if test= \"password != null and password != ''\"> and me_password = #{password} </if>" +
+            "<if test= \"position != null and position != ''\"> and me_position = #{position} </if>" +
             "</where>" +
             "</script>")
     ArrayList<Member> searchMember(Member member);
 
     /**
-     * 注册队员
+     * 添加队员
      * @param member 队员信息
      */
     @ResultMap("memberMapper")
@@ -55,18 +54,20 @@ public interface MemberMapper {
     void memberSignUp(Member member);
 
 
+    /**
+     * 删除成员
+     * @param member 成员信息
+     */
     @ResultMap("memberMapper")
-    @Delete("<script>" +
-            "delete from tb_member" +
-            "<where>" +
-            "<if test= \"id != null and id != ''\"> me_id = #{id} </if>" +
-            "<if test= \"age != null and age != ''\"> and me_age = #{age} </if>" +
-            "<if test= \"gender != null and gender != ''\"> and me_gender = #{gender} </if>" +
-            "<if test= \"grade != null and grade != ''\"> and me_grade = #{grade} </if>" +
-            "<if test= \"name != null and name != ''\"> and me_name = #{name} </if>" +
-            "<if test= \"password != null and password != ''\"> and me_password = #{password} </if>" +
-            "<if test= \"position != null and position != ''\"> and me_position = #{position} </if>" +
-            "</where>" +
-            "</script>")
+    @Delete("delete from tb_member where me_id = #{id}")
     void deleteMember(Member member);
+
+    /**
+     * 修改成员
+     * @param member 成员新信息
+     */
+    @ResultMap("memberMapper")
+    @Update("update tb_member set me_name = #{name}, me_age = #{age} ,me_grade = #{grade}, " +
+            "me_password = #{password},me_position = #{position},me_gender = #{gender} where me_id = #{id}")
+    void updateMember(Member member);
 }
