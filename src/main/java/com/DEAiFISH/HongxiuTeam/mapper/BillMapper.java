@@ -36,8 +36,11 @@ public interface BillMapper {
 
     /**
      * 删除账单
+     *
      * @param bill 账单信息
      */
     @Delete("delete from tb_bill where fu_uid = #{uid};")
+    @ResultMap("billMapper")
     void deleteBill(Bill bill);
+
 }

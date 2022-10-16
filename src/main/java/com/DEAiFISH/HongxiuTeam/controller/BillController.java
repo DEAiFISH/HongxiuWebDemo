@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 
 /**
- * 查询记录 /bill/search --> GET
+ * 查询所有账单 /bill/search --> GET
+ * 查询指定日期的账单 /bill/date --> GET
  * <p>
  * 添加记录 /bill/add --> PUT
- *
+ * <p>
  * 删除记录 /bill/delete --> DELETE
  */
 @Controller
@@ -50,10 +51,17 @@ public class BillController {
     }
 
 
-    @RequestMapping(value = "/bill/delete",method = RequestMethod.DELETE)
+    /**
+     * 删除指定账单
+     *
+     * @param bill 账单信息
+     * @return
+     */
+    @RequestMapping(value = "/bill/delete", method = RequestMethod.DELETE)
     @ResponseBody
-    public boolean deleteBill(@RequestBody Bill bill){
+    public boolean deleteBill(@RequestBody Bill bill) {
         billService.deleteBill(bill);
         return true;
     }
+
 }

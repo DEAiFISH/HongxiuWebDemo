@@ -40,10 +40,13 @@ public class BillServiceImpl implements BillService {
 
     /**
      * 删除账单
+     *
      * @param bill 账单信息
      */
     @Override
     public void deleteBill(Bill bill) {
         billMapper.deleteBill(bill);
     }
+
+
 }

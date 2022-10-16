@@ -10,4 +10,5 @@ public interface BillService {
     void addBill(Bill bill);
 
     void deleteBill(Bill bill);
+
 }
