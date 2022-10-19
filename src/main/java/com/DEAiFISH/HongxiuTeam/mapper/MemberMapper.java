@@ -45,6 +45,7 @@ public interface MemberMapper {
             "</script>")
     ArrayList<Member> searchMember(Member member);
 
+
     /**
      * 添加队员
      *
