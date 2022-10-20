@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 @Transactional
@@ -22,20 +23,20 @@ public class MemberServiceImpl implements MemberService {
      * @return 返回列表
      */
     @Override
-    public ArrayList<Member> getAllMember() {
-        return memberMapper.getAllMember();
+    public ArrayList<Member> getAllMember(HashMap<String,String> map) {
+        return memberMapper.getAllMember(map);
     }
 
 
     /**
      * 查询指定队员信息
      *
-     * @param member 学生信息
+     * @param map 信息和排序条件
      * @return 查询信息
      */
     @Override
-    public ArrayList<Member> searchMember(Member member) {
-        return memberMapper.searchMember(member);
+    public ArrayList<Member> searchMember(HashMap<String,String> map) {
+        return memberMapper.searchMember(map);
     }
 
     /**

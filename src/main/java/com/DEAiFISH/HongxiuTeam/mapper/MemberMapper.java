@@ -5,6 +5,7 @@ import com.DEAiFISH.HongxiuTeam.pojo.Position;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface MemberMapper {
 
@@ -22,13 +23,13 @@ public interface MemberMapper {
      * 查询所有队员
      * @return 队员列表
      */
-    @Select("select * from tb_member")
-    ArrayList<Member> getAllMember();
+    @Select("select * from tb_member order by ${property} ${way}")
+    ArrayList<Member> getAllMember(HashMap<String,String> map);
 
     /**
      * 查询指定队员信息
      *
-     * @param member 学生信息
+     * @param map 信息和排序条件
      * @return 队员信息
      */
     @ResultMap("memberMapper")
@@ -42,8 +43,9 @@ public interface MemberMapper {
             "<if test= \"password != null and password != ''\"> and me_password = #{password} </if>" +
             "<if test= \"position != null and position != ''\"> and me_position = #{position} </if>" +
             "</where>" +
+            "order by ${property} ${way}" +
             "</script>")
-    ArrayList<Member> searchMember(Member member);
+    ArrayList<Member> searchMember(HashMap<String,String> map);
 
 
     /**

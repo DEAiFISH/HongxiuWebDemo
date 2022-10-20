@@ -65,9 +65,9 @@ public class Member extends People {
                 ", name='" + getName() +
                 ", age=" + getAge() +
                 ", gender='" + getGender() +
-                "grade=" + getGrade() +
-                "password=" + getPassword() +
-                "position=" + getPosition() +
+                ", grade=" + getGrade() +
+                ", password=" + getPassword() +
+                ", position=" + getPosition() +
                 '}';
     }
 }

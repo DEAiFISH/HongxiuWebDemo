@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 查询所有队员 /member/all --> GET
@@ -32,57 +33,57 @@ public class MemberController {
 
     /**
      * 查询所有队员
-     *
+     * @param map 根据条件查询
      * @return Json格式的队员列表
      */
     @RequestMapping(value = "/member/all", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<Member> getAllMember() {
-        return memberService.getAllMember();
+    public ArrayList<Member> getAllMember(@RequestBody HashMap<String,String> map) {
+        return memberService.getAllMember(map);
     }
 
 
     /**
      * 查询指定队员
      *
+     * @param map 信息和排序条件
      * @return Json格式的队员列表
      */
     @RequestMapping(value = {"/member/search"}, method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<Member> searchMember(@RequestBody Member member) {
-        return memberService.searchMember(member);
+    public ArrayList<Member> searchMember(@RequestBody HashMap<String,String> map) {
+        return memberService.searchMember(map);
     }
 
 
     /**
      * 登录
      *
-     * @param member id和password
+     * @param map 信息和排序条件
      * @return
      */
     @RequestMapping(value = "/member/login", method = RequestMethod.GET)
     @ResponseBody
-    public boolean memberLogin(@RequestBody Member member) {
-        ArrayList<Member> m = memberService.searchMember(member);
-        if (m.size() != 0) {
-            return true;
+    public boolean memberLogin(@RequestBody HashMap<String,String> map) {
+        ArrayList<Member> member = memberService.searchMember(map);
+        if (member.isEmpty()) {
+            return false;
         }
-
-        return false;
+        return true;
     }
 
 
     /**
      * 查询是否存在
      *
-     * @param member 传入id
+     * @param map 根据条件查询
      * @return true:ok;false:no;
      */
     @RequestMapping(value = "/member/contains", method = RequestMethod.GET)
     @ResponseBody
-    public boolean containsMemberById(@RequestBody Member member) {
-        ArrayList<Member> memberList = memberService.searchMember(new Member(member.getId()));
-        if (memberList.size() != 0) {
+    public boolean containsMemberById(@RequestBody HashMap<String,String> map) {
+        ArrayList<Member> memberList = memberService.searchMember(map);
+        if (memberList.isEmpty()) {
             return false;
         }
 
