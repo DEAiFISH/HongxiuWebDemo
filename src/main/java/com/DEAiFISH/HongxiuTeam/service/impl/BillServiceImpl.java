@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 @Transactional
@@ -19,12 +20,13 @@ public class BillServiceImpl implements BillService {
     /**
      * 查询所有账单
      *
+     * @param map 根据条件查询
      * @return 账单
      */
     @Override
-    public ArrayList<Bill> getAllBill() {
+    public ArrayList<Bill> getAllBill(HashMap<String,String> map) {
 
-        return billMapper.getAllBill();
+        return billMapper.getAllBill(map);
     }
 
     /**

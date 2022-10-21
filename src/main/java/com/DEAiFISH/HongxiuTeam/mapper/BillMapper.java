@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface BillMapper {
 
@@ -19,10 +20,12 @@ public interface BillMapper {
 
     /**
      * 查询所有账单
+     *
+     * @param map 根据条件查询
      * @return 账单列表
      */
-    @Select("select * from tb_bill")
-    ArrayList<Bill> getAllBill();
+    @Select("select * from tb_bill order by ${property} ${way}")
+    ArrayList<Bill> getAllBill(HashMap<String,String> map);
 
     /**
      * 添加账单

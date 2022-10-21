@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 查询所有账单 /bill/search --> GET
@@ -28,12 +29,13 @@ public class BillController {
     /**
      * 查询所有账单
      *
+     * @param map 根据条件查询
      * @return 账单
      */
     @RequestMapping(value = "/bill/all", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<Bill> getAllBill() {
-        return billService.getAllBill();
+    public ArrayList<Bill> getAllBill(@RequestBody HashMap<String,String> map) {
+        return billService.getAllBill(map);
     }
 
 

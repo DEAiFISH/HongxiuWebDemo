@@ -16,6 +16,7 @@ import java.util.HashMap;
  * 查询所有队员 /member/all --> GET
  * 查询指定队员 /member/search --> GET
  * 队员登录 /member/login --> GET
+ * 查询是否存在 /member/contains --> GET
  * <p>
  * 注册队员 /member/signup --> POST
  * <p>
