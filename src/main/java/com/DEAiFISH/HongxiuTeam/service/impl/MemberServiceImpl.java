@@ -29,6 +29,16 @@ public class MemberServiceImpl implements MemberService {
 
 
     /**
+     *  根据ID查询成员
+     * @param member ID 和 password
+     * @return
+     */
+    @Override
+    public Member getMemberById(Member member){
+        return memberMapper.getMemberById(member);
+    }
+
+    /**
      * 查询指定队员信息
      *
      * @param map 信息和排序条件

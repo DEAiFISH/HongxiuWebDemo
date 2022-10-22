@@ -26,6 +26,23 @@ public interface MemberMapper {
     @Select("select * from tb_member order by ${property} ${way}")
     ArrayList<Member> getAllMember(HashMap<String,String> map);
 
+
+    /**
+     * 根据Id查询成员
+     * @param member
+     * @return
+     */
+    @Select("<script>" +
+            "select * from tb_member" +
+            "<where>" +
+            "<if test= \"id != null and id != ''\"> me_id = #{id} </if>" +
+            "<if test= \"password != null and password != ''\"> and me_password = #{password} </if>" +
+            "</where>" +
+            "</script>")
+    @ResultMap("memberMapper")
+    Member getMemberById(Member member);
+
+
     /**
      * 查询指定队员信息
      *
@@ -35,12 +52,10 @@ public interface MemberMapper {
     @ResultMap("memberMapper")
     @Select("<script> SELECT * FROM tb_member " +
             "<where>" +
-            "<if test= \"id != null and id != ''\"> me_id = #{id} </if>" +
             "<if test= \"age != null and age != ''\"> and me_age = #{age} </if>" +
             "<if test= \"gender != null and gender != ''\"> and me_gender = #{gender} </if>" +
             "<if test= \"grade != null and grade != ''\"> and me_grade = #{grade} </if>" +
             "<if test= \"name != null and name != ''\"> and me_name = #{name} </if>" +
-            "<if test= \"password != null and password != ''\"> and me_password = #{password} </if>" +
             "<if test= \"position != null and position != ''\"> and me_position = #{position} </if>" +
             "</where>" +
             "order by ${property} ${way}" +
