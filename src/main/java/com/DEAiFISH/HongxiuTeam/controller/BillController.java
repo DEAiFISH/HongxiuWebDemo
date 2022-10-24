@@ -34,7 +34,7 @@ public class BillController {
      */
     @RequestMapping(value = "/bill/all", method = RequestMethod.GET)
     @ResponseBody
-    public ArrayList<Bill> getAllBill(@RequestBody HashMap<String,String> map) {
+    public ArrayList<Bill> getAllBill(@RequestBody HashMap<String, String> map) {
         return billService.getAllBill(map);
     }
 

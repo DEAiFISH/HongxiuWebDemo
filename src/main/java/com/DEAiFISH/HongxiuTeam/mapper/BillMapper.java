@@ -25,7 +25,7 @@ public interface BillMapper {
      * @return 账单列表
      */
     @Select("select * from tb_bill order by ${property} ${way}")
-    ArrayList<Bill> getAllBill(HashMap<String,String> map);
+    ArrayList<Bill> getAllBill(HashMap<String, String> map);
 
     /**
      * 添加账单

@@ -24,11 +24,12 @@ public interface MemberMapper {
      * @return 队员列表
      */
     @Select("select * from tb_member order by ${property} ${way}")
-    ArrayList<Member> getAllMember(HashMap<String,String> map);
+    ArrayList<Member> getAllMember(HashMap<String, String> map);
 
 
     /**
      * 根据Id查询成员
+     *
      * @param member
      * @return
      */
@@ -60,7 +61,7 @@ public interface MemberMapper {
             "</where>" +
             "order by ${property} ${way}" +
             "</script>")
-    ArrayList<Member> searchMember(HashMap<String,String> map);
+    ArrayList<Member> searchMember(HashMap<String, String> map);
 
 
     /**

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface BillService {
-    ArrayList<Bill> getAllBill(HashMap<String,String> map);
+    ArrayList<Bill> getAllBill(HashMap<String, String> map);
 
     void addBill(Bill bill);
 

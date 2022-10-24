@@ -24,7 +24,7 @@ public class BillServiceImpl implements BillService {
      * @return 账单
      */
     @Override
-    public ArrayList<Bill> getAllBill(HashMap<String,String> map) {
+    public ArrayList<Bill> getAllBill(HashMap<String, String> map) {
 
         return billMapper.getAllBill(map);
     }

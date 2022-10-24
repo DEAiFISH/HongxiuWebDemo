@@ -23,19 +23,8 @@ public class MemberServiceImpl implements MemberService {
      * @return 返回列表
      */
     @Override
-    public ArrayList<Member> getAllMember(HashMap<String,String> map) {
+    public ArrayList<Member> getAllMember(HashMap<String, String> map) {
         return memberMapper.getAllMember(map);
-    }
-
-
-    /**
-     *  根据ID查询成员
-     * @param member ID 和 password
-     * @return
-     */
-    @Override
-    public Member getMemberById(Member member){
-        return memberMapper.getMemberById(member);
     }
 
     /**
@@ -45,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
      * @return 查询信息
      */
     @Override
-    public ArrayList<Member> searchMember(HashMap<String,String> map) {
+    public ArrayList<Member> searchMember(HashMap<String, String> map) {
         return memberMapper.searchMember(map);
     }
 
@@ -58,7 +47,6 @@ public class MemberServiceImpl implements MemberService {
     public void memberSignUp(Member member) {
         memberMapper.memberSignUp(member);
     }
-
 
     /**
      * 删除队员
@@ -78,5 +66,16 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void updateMember(Member member) {
         memberMapper.updateMember(member);
+    }
+
+    /**
+     * 根据ID查询成员
+     *
+     * @param member ID 和 password
+     * @return
+     */
+    @Override
+    public Member getMemberById(Member member) {
+        return memberMapper.getMemberById(member);
     }
 }
