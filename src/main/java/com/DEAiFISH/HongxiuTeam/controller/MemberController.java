@@ -23,6 +23,7 @@ import java.util.HashMap;
  * 修改队员 /member/update --> PUT
  * <p>
  * 删除队员 /member/delete --> DELETE
+ * @author DEAiFISH
  */
 
 
@@ -62,15 +63,12 @@ public class MemberController {
      * 登录
      *
      * @param member id 和 password
-     * @return
+     * @return true:登录成功;false:登录失败
      */
     @RequestMapping(value = "/member/login", method = RequestMethod.GET)
     @ResponseBody
     public boolean memberLogin(@RequestBody Member member) {
-        if (memberService.getMemberById(member) == null) {
-            return false;
-        }
-        return true;
+        return memberService.getMemberById(member) != null;
     }
 
 
@@ -83,43 +81,39 @@ public class MemberController {
     @RequestMapping(value = "/member/contains", method = RequestMethod.GET)
     @ResponseBody
     public boolean containsMemberById(@RequestBody Member member) {
-        if (memberService.getMemberById(member) == null) {
-            return false;
-        }
-
-        return true;
+        return memberService.getMemberById(member) != null;
     }
 
     /**
      * 注册队员
      *
      * @param member id
-     * @return
+     * @return true:注册成功;false:注册失败
      */
     @RequestMapping(value = "/member/signup", method = RequestMethod.POST, produces = "application/html;charset=utf-8")
     @ResponseBody
-    public String memberSignUp(@RequestBody Member member) {
+    public boolean memberSignUp(@RequestBody Member member) {
         if (memberService.getMemberById(member) == null) {
             memberService.memberSignUp(member);
-            return "注册成功";
+            return true;
         }
-        return "该ID已存在！注册失败!";
+        return false;
     }
 
     /**
      * 删除队员
      *
      * @param member Id
-     * @return
+     * @return true:删除成功;false:删除失败
      */
     @RequestMapping(value = "/member/delete", method = RequestMethod.DELETE, produces = "application/html;charset=utf-8")
     @ResponseBody
-    public String deleteMember(@RequestBody Member member) {
+    public boolean deleteMember(@RequestBody Member member) {
         if (memberService.getMemberById(member) != null) {
             memberService.deleteMember(member);
-            return "删除成功";
+            return true;
         }
-        return "该ID不存在！删除失败！";
+        return false;
     }
 
 
@@ -127,16 +121,16 @@ public class MemberController {
      * 修改成员
      *
      * @param member Id
-     * @return
+     * @return true:修改成功;false:修改失败
      */
     @RequestMapping(value = "/member/update", method = RequestMethod.PUT, produces = "application/html;charset=utf-8")
     @ResponseBody
-    public String updateMember(@RequestBody Member member) {
+    public boolean updateMember(@RequestBody Member member) {
         if (memberService.getMemberById(member) != null) {
             memberService.updateMember(member);
-            return "修改成功";
+            return true;
         }
-        return "该ID不存在！修改失败！";
+        return false;
     }
 
 

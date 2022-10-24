@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author DEAiFISH
+ */
 @Service
 @Transactional
 public class MemberServiceImpl implements MemberService {
@@ -20,6 +23,7 @@ public class MemberServiceImpl implements MemberService {
     /**
      * 查询所有队员
      *
+     * @param map 排序条件
      * @return 返回列表
      */
     @Override
@@ -72,7 +76,7 @@ public class MemberServiceImpl implements MemberService {
      * 根据ID查询成员
      *
      * @param member ID 和 password
-     * @return
+     * @return 成员信息
      */
     @Override
     public Member getMemberById(Member member) {
