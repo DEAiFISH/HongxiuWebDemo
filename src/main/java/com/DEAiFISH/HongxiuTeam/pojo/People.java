@@ -1,6 +1,6 @@
 package com.DEAiFISH.HongxiuTeam.pojo;
 
-public class People {
+public abstract class People {
     private Integer id;
     private String name;
     private Integer age;
